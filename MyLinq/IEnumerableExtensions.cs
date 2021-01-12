@@ -71,5 +71,17 @@ namespace MyLinq
                     yield return t;
             }
         }
+        public static IEnumerable<T> Distinct<T>(this IEnumerable<T> collection)
+        {
+            var res = new HashSet<T>();
+            foreach(var e in collection)
+            {
+                if (!res.Contains(e))
+                {
+                    res.Add(e);
+                    yield return e;
+                }
+            }
+        }
     }
 }

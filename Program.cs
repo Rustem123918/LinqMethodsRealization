@@ -8,9 +8,9 @@ namespace LinqMethodsRealization
     {
         static void Main(string[] args)
         {
-            var list = new List<int>(new[] { 1, 2, 5, 3, 2 });
-            var res = list.Take(3);
-            foreach (var e in res)
+            var list = new List<string>() { "Jora", "Petya", "Pin", "Kesha", "Jam" };
+            var y = list.SelectMany(name => name.Select(letter => letter.ToString()+letter.ToString()));
+            foreach (var e in y)
                 Console.WriteLine(e);
         }
     }

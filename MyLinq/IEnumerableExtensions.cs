@@ -23,6 +23,16 @@ namespace MyLinq
                 result.Add(e);
             return result;
         }
+        public static T[] ToArray<T>(this IEnumerable<T> collection)
+        {
+            var temp = new List<T>();
+            foreach (var e in collection)
+                temp.Add(e);
+            var result = new T[temp.Count];
+            for(int i = 0; i<temp.Count; i++)
+                result[i] = temp[i];
+            return result;
+        }
         public static T FirstOrDefault<T>(this IEnumerable<T> collection, Func<T, bool> filter)
         {
             foreach (var e in collection)
@@ -38,6 +48,27 @@ namespace MyLinq
                     break;
                 yield return e;
                 i++;
+            }
+        }
+        public static IEnumerable<T> Skip<T>(this IEnumerable<T> collection, int count)
+        {
+            var i = 0;
+            foreach(var e in collection)
+            {
+                if(i >= count)
+                {
+                    yield return e;
+                }
+                i++;
+            }
+        }
+        public static IEnumerable<R> SelectMany<T, R>(this IEnumerable<T> collection, Func<T, IEnumerable<R>> func)
+        {
+            foreach (var e in collection)
+            {
+                var temp = func(e);
+                foreach (var t in temp)
+                    yield return t;
             }
         }
     }

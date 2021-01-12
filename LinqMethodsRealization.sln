@@ -4,6 +4,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 16.0.30503.244
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LinqMethodsRealization", "LinqMethodsRealization.csproj", "{B780625F-1571-4DC3-801C-30BE0FD41501}"
+	ProjectSection(ProjectDependencies) = postProject
+		{390729A0-D6F0-4FF7-8524-6E4C42E6A40B} = {390729A0-D6F0-4FF7-8524-6E4C42E6A40B}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyLinq", "MyLinq\MyLinq.csproj", "{390729A0-D6F0-4FF7-8524-6E4C42E6A40B}"
 EndProject

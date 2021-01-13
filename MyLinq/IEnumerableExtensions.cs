@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 
 namespace MyLinq
@@ -82,6 +83,30 @@ namespace MyLinq
                     yield return e;
                 }
             }
+        }
+        public static bool All<T>(this IEnumerable<T> collection, Predicate<T> predicate)
+        {
+            foreach (var e in collection)
+                if (!predicate(e))
+                    return false;
+            return true;
+        }
+        public static bool Any<T>(this IEnumerable<T> collection, Predicate<T> predicate)
+        {
+            foreach (var e in collection)
+                if (predicate(e))
+                    return true;
+            return false;
+        }
+        public static int Count<T>(this IEnumerable<T> collection)
+        {
+            var icollection = collection as ICollection;
+            if (icollection != null)
+                return icollection.Count;
+            int count = 0;
+            foreach (var e in collection)
+                count++;
+            return count;
         }
     }
 }
